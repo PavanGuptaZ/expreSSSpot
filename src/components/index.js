@@ -4,6 +4,7 @@ export { Footer } from './Footer'
 export { PostBlock } from './UsesHomePageBlocks/PostBlock'
 export { PostBlock02 } from './UsesHomePageBlocks/PostBlock02'
 export { PostBlock03 } from './UsesHomePageBlocks/PostBlock03'
+export { CommentBlock } from './CommentBlock'
 
 export { Heading } from './Heading'
 export { ViewMore } from './ViewMore'

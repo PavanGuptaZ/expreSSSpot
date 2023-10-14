@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { DefaultLayout, UserLayout } from './Layouts'
 import { themeDetails, userDetails } from './Hooks/ContextProvider'
-import { NavBar } from './components'
+import { Footer, NavBar } from './components'
 import { DarkMode, LiteMode } from './theme/themeColors';
 
 export default function App() {
@@ -11,6 +11,7 @@ export default function App() {
   return (
     <div className='fullBody' style={{ backgroundColor: body }}>
       <div className='elementsOrder'>
+        <Footer />
         {!user && <DefaultLayout />}
         {user && <UserLayout />}
         <NavBar />

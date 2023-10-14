@@ -50,7 +50,7 @@ export const LoginForm = () => {
             <AiOutlineEye />
           </label>
         </div>
-        <button className={styles.submitBTN} style={{ color: text }} onClick={handleLogin}>Submit</button>
+        <button className={styles.submitBTN} style={{ color: text }} onClick={handleLogin}>Login</button>
       </div>
     </div>
   )

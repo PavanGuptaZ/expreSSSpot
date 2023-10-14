@@ -1,16 +1,16 @@
-import { useContext, useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
-import logo from '../assets/ExpressSpot.png'
-import { VscColorMode } from 'react-icons/vsc'
-import { MdOutlineLightMode } from 'react-icons/md'
-import { TbLayoutNavbarCollapseFilled, TbLayoutNavbarExpandFilled } from 'react-icons/tb'
-import { themeDetails, userDetails } from '../Hooks/ContextProvider'
-import { LiteMode, DarkMode } from '../theme/themeColors'
+import { useContext, useMemo, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import logo from '../assets/ExpressSpot.png';
+import { VscColorMode } from 'react-icons/vsc';
+import { MdOutlineLightMode } from 'react-icons/md';
+import { TbLayoutNavbarCollapseFilled, TbLayoutNavbarExpandFilled } from 'react-icons/tb';
+import { themeDetails, userDetails } from '../Hooks/ContextProvider';
+import { LiteMode, DarkMode } from '../theme/themeColors';
 
 export const NavBar = () => {
   let { theme, setTheme } = useContext(themeDetails)
   let { user, setUser } = useContext(userDetails)
-  let { body, text, main } = theme ? DarkMode : LiteMode;
+  let { body, text, main } = useMemo(() => theme ? DarkMode : LiteMode, [theme]);
   const [displayNav, setDisplayNav] = useState(false);
   const Navigate = useNavigate()
   const toggleMode = () => {
