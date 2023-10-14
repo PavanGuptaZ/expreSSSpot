@@ -1,0 +1,36 @@
+.ProfileListBtns {
+
+    .btsList {
+        display: flex;
+        user-select: none;
+        cursor: pointer;
+
+    }
+
+    .ProfileRotingBtns {
+        position: relative;
+        margin: 0 0.75rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        transform-origin: center;
+    }
+
+    .ProfileRotingBtns::after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        background: linear-gradient(to left, #FF88C1 0%, #ff0080 100%);
+        left: 0;
+        bottom: 0;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: all 0.5s ease;
+    }
+
+    .ProfileRotingBtns.active::after,
+    .ProfileRotingBtns:hover::after {
+        transform-origin: center;
+        transform: scaleX(1);
+    }
+}

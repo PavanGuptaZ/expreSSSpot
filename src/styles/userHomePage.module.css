@@ -1,0 +1,126 @@
+.newPosts {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    flex-direction: row;
+}
+
+.PostBlock01 {
+    max-width: 620px;
+    min-width: 340px;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+
+.PostBlock02 {
+    max-width: 340px;
+    flex-grow: 0;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    /* margin: 0 0.5rem; */
+}
+
+.PostBlock03 {
+    max-width: 170px;
+    flex-grow: 0;
+    padding: 1rem;
+    border-radius: 5px;
+    /* margin: 0 0.5rem; */
+}
+.PostBlockBox {
+    padding: 0.5rem 0;
+    border-radius: 5px;
+    margin: 0.5rem 0;
+}
+
+.head {
+    font-family: 'Gabarito', sans-serif;
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+    font-weight: 500;
+}
+
+.head02 {
+    font-family: 'Gabarito', sans-serif;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    font-weight: 500;
+
+}
+
+.content {
+    margin: 0.5rem 0;
+}
+
+.content02 {
+    font-size: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+.author {
+    cursor: pointer;
+    font-weight: 500;
+    background-color: #FF88C1;
+    padding: 0.25rem;
+    border-radius: 5px;
+    /* text-decoration: underline; */
+}
+
+.newPostsAside {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    .newsImage {
+        display: none;
+    }
+}
+
+.newsImage {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+@media screen and (max-Width:1000px) {
+    .PostBlock01 {
+        max-width: 688px;
+    }
+
+    .newPostsAside {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+}
+
+@media screen and (max-Width:710px) {
+    .PostBlock02 {
+        max-width: 688px;
+        margin: 0 0.5rem;
+    }
+
+    .newPostsAside {
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .newsImage {
+            display: block;
+        }
+    }
+
+}
+
+@media screen and (max-Width:450px) {
+    .PostBlock03 {
+        max-width: calc((100% / 2) - 1rem);
+    }
+}

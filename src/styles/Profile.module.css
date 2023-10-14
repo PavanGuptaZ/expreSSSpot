@@ -1,0 +1,112 @@
+.profileHeadBox {
+    width: 100%;
+    margin-bottom: 1rem;
+
+    .coverImageBox {
+        position: relative;
+        width: 100%;
+        height: 200px;
+
+        .coverImage {
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+
+    .profileImage {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        right: 100px;
+        bottom: -75px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .userDetails {
+        padding: 1rem;
+        font-family: 'Gabarito', sans-serif;
+
+        .userName {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: inherit;
+            margin-bottom: 1rem;
+        }
+
+        .userId {
+            font-size: 1.25rem;
+            font-weight: 400;
+            font-family: inherit;
+
+        }
+
+        .userdescription {
+            font-family: inherit;
+
+        }
+    }
+
+}
+
+@media screen and (max-Width:640px) {
+    .profileHeadBox {
+        .profileImage {
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+        .userDetails {
+            text-align: center;
+            padding-top: 100px;
+
+        }
+
+    }
+}
+
+.ListBlockBox {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+    padding: 0 0.5rem;
+    width: 100%;
+
+    .ListBlock {
+        min-width: 350px;
+        flex-grow: 1;
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        margin: 0.55rem 0;
+
+        .imageBox {
+            width: 100px;
+            height: 100px;
+        }
+
+        .listBlockContent {
+            display: flex;
+            flex-direction: column;
+            padding: 0.5rem;
+            overflow: hidden;
+
+            .listBlockHead {
+                font-family: 'Gabarito', sans-serif;
+                font-size: 1.25rem;
+                font-weight: 700;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            .listBlockText {
+                font-family: 'Gabarito', sans-serif;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            .listBlockDate{
+                margin-top: auto;
+            }
+        }
+    }
+}
