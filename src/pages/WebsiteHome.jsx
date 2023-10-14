@@ -1,7 +1,7 @@
 import image from '../assets/photo.png';
 import image01 from '../assets/photo01.jfif';
 import image02 from '../assets/photo02.jfif';
-import rohit from '../assets/rohit.jpeg';
+import rohit from '../assets/Rohit-small.png';
 import styles from '../styles/WebSiteHome.module.css';
 
 export const WebsiteHome = () => {
