@@ -39,14 +39,14 @@
 
 .label {
     position: absolute;
-    top: 50%;
+    top: 20px;
     left: 10px;
     transform: translateY(-50%);
 }
 
 .PasswordToggle {
     position: absolute;
-    top: 50%;
+    top: 20px;
     right: 10px;
     transform: translateY(-50%);
     cursor: pointer;
@@ -60,4 +60,7 @@
     margin: 0.5rem;
     border-radius: 5px;
     background-color: #FF88C1;
+}
+.warningLabel{
+    color: red;
 }

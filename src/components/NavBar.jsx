@@ -1,5 +1,5 @@
 import { useContext, useMemo, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../assets/ExpressSpot.png';
 import { VscColorMode } from 'react-icons/vsc';
 import { MdOutlineLightMode } from 'react-icons/md';
@@ -20,7 +20,7 @@ export const NavBar = () => {
     border: `1px solid ${text}`
   }
   const handleLogout = () => {
-    setUser(pre => !pre)
+    setUser(null)
     navigator("/")
   }
   return (
@@ -33,11 +33,11 @@ export const NavBar = () => {
       </div>
       <div className={`navLinkBox ${displayNav ? "active" : ""}`} style={{ color: text }}>
         {
-          user == true ?
+          user !== null ?
             <>
               <NavLink to="/profile" className='navlink' style={Border} onClick={() => setDisplayNav(false)}>Profile</NavLink>
               <NavLink to="new" className='navlink' style={Border} onClick={() => setDisplayNav(false)}>NewPost</NavLink>
-              <NavLink className='navlink' style={Border} onClick={handleLogout}>Logout</NavLink>
+              <Link className='navlink' style={Border} onClick={handleLogout}>Logout</Link>
             </>
             :
             <>

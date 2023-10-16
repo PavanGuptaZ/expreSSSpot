@@ -7,7 +7,7 @@ export const themeDetails = React.createContext()
 
 export const ContextProvider = (prototype) => {
     const [theme, setTheme] = useLocalStorageForTheme("DarkMode", false)
-    let [user, setUser] = useState(false)
+    let [user, setUser] = useState(null)
     return (
         <userDetails.Provider value={{ user, setUser }}>
             <themeDetails.Provider value={{ theme, setTheme }}>
