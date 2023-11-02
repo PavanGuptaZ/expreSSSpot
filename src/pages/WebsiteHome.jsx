@@ -1,10 +1,19 @@
+import { useContext } from 'react';
 import image from '../assets/photo.png';
 import image01 from '../assets/photo01.jfif';
 import image02 from '../assets/photo02.jfif';
 import rohit from '../assets/Rohit-small.png';
+import { LoadingComponent } from '../components';
+import { userDetails } from '../Hooks/ContextProvider';
 import styles from '../styles/WebSiteHome.module.css';
 
 export const WebsiteHome = () => {
+  let { userLoading } = useContext(userDetails);
+
+
+  if (userLoading) {
+    return <LoadingComponent />
+  }
   return (
     <div className={styles.websiteHomeBox}>
       <section className={styles.basicSection01}>

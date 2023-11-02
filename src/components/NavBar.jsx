@@ -19,9 +19,23 @@ export const NavBar = () => {
   const Border = {
     border: `1px solid ${text}`
   }
-  const handleLogout = () => {
-    setUser(null)
-    navigator("/")
+  const handleLogout = async () => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+    }
+    try {
+      const responce = await fetch(import.meta.env.VITE_BACKEND_LINK + '/auth/logout', requestOptions)
+      const data = await responce.json()
+      console.log(data.message)
+    } catch (err) {
+      console.log(err)
+    }
+    finally {
+      setUser(null)
+      Navigate("/")
+    }
   }
   return (
     <nav style={{ backgroundColor: body }}>

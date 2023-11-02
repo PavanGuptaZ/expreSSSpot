@@ -17,3 +17,4 @@ export { ProfileList } from './ProfilePageBlocks/ProfileList'
 
 
 export { ControlBtns } from './ControlBtns'
+export { LoadingComponent } from './LoadingComponent'

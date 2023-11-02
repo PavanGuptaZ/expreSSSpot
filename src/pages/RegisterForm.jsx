@@ -28,7 +28,7 @@ export const RegisterForm = () => {
 
     }
   }
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     setChecks(true)
     let data = { email: userInput.email, password: userInput.password1 }
     if (!EmailCheck01 && !PasswordCheck01 && !PasswordCheck02) {
@@ -101,7 +101,7 @@ export const RegisterForm = () => {
           {checks && PasswordCheck02 && <div className={styles.warningLabel}>Password should be same</div>}
 
         </div>
-        <button className={styles.submitBTN} style={{ color: text }} onClick={handleLogin}>Submit</button>
+        <button className={styles.submitBTN} style={{ color: text }} onClick={handleRegister}>Submit</button>
         <div id="ResisterMessage">{userInput.message}</div>
         {isloading && <div className="Loading">Loading</div>}
       </div>

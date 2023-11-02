@@ -1,13 +1,12 @@
 
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import styles from '../styles/Login&Register.module.css'
 import { DarkMode, LiteMode } from "../theme/themeColors";
 import { themeDetails, userDetails } from "../Hooks/ContextProvider";
-import { Heading } from '../components'
+import { Heading, LoadingComponent } from '../components'
 import { AiOutlineEye, AiOutlineUser } from 'react-icons/ai';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie'
 
 export const LoginForm = () => {
   const [userInput, setUserInput] = useState({ email: "", password: "", message: "" })
@@ -16,9 +15,16 @@ export const LoginForm = () => {
 
   let { theme } = useContext(themeDetails)
   let { body, text, innershadow, glassBackground } = useMemo(() => theme ? DarkMode : LiteMode, [theme]);
-  let { setUser } = useContext(userDetails);
+  let { user, setUser, userLoading } = useContext(userDetails);
   let navigator = useNavigate()
-
+  useEffect(() => {
+    if (user) {
+      navigator("/")
+    }
+  })
+  if (userLoading) {
+    return <LoadingComponent />
+  }
   const handleToggle = (e) => {
     let element = e.target.closest(".passwordBox").querySelector("#password")
     let att = element.getAttribute("type")
@@ -36,21 +42,17 @@ export const LoginForm = () => {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        credentials: 'include',
       }
       try {
         setIsLoading(true)
-        await fetch(import.meta.env.VITE_BACKEND_LINK + "/login", requestOptions)
-          .then((res) => res.json())
-          .then((data) => {
-            setUserInput((pre) => ({ ...pre, message: data.message }))
-            if (data) {
-              setUser(data)
-              navigator("/")
-              Cookies.set("ok", "ok2", { expires: 1 })
-              console.log(data);
-            }
-          })
+        let responce = await fetch(import.meta.env.VITE_BACKEND_LINK + "/auth", requestOptions)
+        let data = await responce.json()
+        setUserInput((pre) => ({ ...pre, message: data.message }))
+        if (responce.status === 200) {
+          setUser(data.user)
+        }
       } catch {
         setUserInput((pre) => ({ ...pre, message: "SomeThing Wrong Try Again" }))
       } finally {
@@ -75,7 +77,7 @@ export const LoginForm = () => {
           <label htmlFor="Email" className={styles.label}> <AiOutlineUser /></label>
           <input id='Email' className={styles.inputBox} type="email"
             placeholder='Email here' value={userInput.email}
-            onChange={(e) => setUserInput((pre) => ({ ...pre, email: (e.target.value.trim()) }))}
+            onChange={(e) => setUserInput((pre) => ({ ...pre, email: e.target.value.trim() }))}
             style={{ backgroundColor: body, boxShadow: innershadow, color: text }} />
           {checks && EmailCheck01 && <div className={styles.warningLabel}>{userInput.email.trim().length} - min of 3 and a max of 40 characters @ total 50</div>}
 
@@ -84,7 +86,7 @@ export const LoginForm = () => {
           <label htmlFor="password" className={styles.label}><RiLockPasswordLine /></label>
           <input id='password' className={styles.inputBox} type="password"
             placeholder='Password here' value={userInput.password}
-            onChange={(e) => setUserInput((pre) => ({ ...pre, password: (e.target.value.trim()) }))}
+            onChange={(e) => setUserInput((pre) => ({ ...pre, password: e.target.value.trim() }))}
             style={{ backgroundColor: body, boxShadow: innershadow, color: text }} />
           <label htmlFor="password" className={styles.PasswordToggle} onClick={(e) => handleToggle(e)}>
             <AiOutlineEye />
@@ -93,7 +95,7 @@ export const LoginForm = () => {
 
         </div>
         <button className={styles.submitBTN} style={{ color: text }} onClick={handleLogin}>Login</button>
-        <div id="LoginMessage">{userInput.message}</div>
+        <div id="LoginMessage" className={styles.userMessage}>{userInput.message}</div>
         {isloading && <div className="Loading">Loading</div>}
       </div>
     </div>

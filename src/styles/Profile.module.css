@@ -72,7 +72,13 @@
     padding: 0 0.5rem;
     width: 100%;
 
+    .userMessage {
+        text-align: center;
+    }
+
     .ListBlock {
+        user-select: none;
+        cursor: pointer;
         min-width: 350px;
         flex-grow: 1;
         display: grid;
@@ -91,6 +97,34 @@
             overflow: hidden;
 
             .listBlockHead {
+                display: flex;
+                justify-content: flex-end;
+                gap: 1rem;
+                padding: 0 1rem;
+
+
+                .BTNStyle{
+                    cursor: pointer;
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                    font-size: 1.25rem;
+    
+                }
+                .editBTN {
+                    &:hover {
+                        color: #FF6AB1;
+                    }
+                }
+
+                .deleteBTN {
+                    &:hover {
+                        color: red;
+                    }
+                }
+            }
+
+            .listBlocktitle {
                 font-family: 'Gabarito', sans-serif;
                 font-size: 1.25rem;
                 font-weight: 700;
@@ -98,13 +132,15 @@
                 text-overflow: ellipsis;
                 overflow: hidden;
             }
+
             .listBlockText {
                 font-family: 'Gabarito', sans-serif;
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 overflow: hidden;
             }
-            .listBlockDate{
+
+            .listBlockDate {
                 margin-top: auto;
             }
         }

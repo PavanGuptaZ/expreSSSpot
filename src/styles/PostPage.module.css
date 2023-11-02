@@ -34,9 +34,13 @@
     width: 100%;
     aspect-ratio: 16/9;
     max-height: 500px;
+    height: min-content;
     overflow: hidden;
     margin: 0.5rem;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .postContent {
@@ -51,94 +55,130 @@
     background-color: #FF88C1;
     margin: 0.5rem 0;
 }
-.addCommentBox{
+
+.addCommentBox {
     border: 2px solid gray;
     min-width: 300px;
     max-width: 600px;
     width: 100%;
     margin: 1rem;
     padding: 0.5rem;
-    &:focus-within{
+    display: flex;
+    flex-direction: column;
+
+    &:focus-within {
         border: 2px solid #FF88C1;
     }
-    .commenttextarea{
+
+    .commenttextarea {
         width: 100%;
         resize: none;
         max-height: 100px;
         border: none;
         outline: none;
     }
-    .commentControls{
+
+    .commentControls {
         display: flex;
         justify-content: space-between;
         padding: 0.5rem;
-        height: 50px;
-        
-        .BTN{
+        flex-wrap: wrap;
+
+        .BTN {
             outline: none;
             border: none;
             padding: 0.25rem 0.75rem;
             border-radius: 5px;
             cursor: pointer;
             margin: 0 0.5rem;
-            
-            &.submit{
+
+            &.submit {
                 background-color: #FF88C1;
             }
-            &.cancel{
+
+            &.cancel {
                 background-color: rgba(128, 128, 128, 0.5);
             }
 
-            &:hover{
-               box-shadow: 0 0 7px gray;
+            &:hover {
+                box-shadow: 0 0 7px gray;
             }
         }
     }
 }
 
-.commentBox{
+.commentBox {
     border: 1px solid gray;
     min-width: 300px;
     max-width: 600px;
     width: 100%;
     margin: 1rem;
     padding: 0.5rem;
-    
-    .commentHead{
+
+    .commentHead {
         display: flex;
         align-items: center;
         gap: 1rem;
-        .profileImg{
+
+        .profileImg {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             overflow: hidden;
         }
-        .userDetails{
+
+        .userDetails {
             font-size: 0.75rem;
-            .time{
+
+            .time {
                 color: gray;
             }
         }
     }
-    .commentText{
+
+    .commentText {
         font-family: 'Gabarito', sans-serif;
         margin: 0.5rem 0;
         padding: 0 0.5rem;
     }
-    .commentControls{
+
+    .commentControls {
         float: right;
         display: flex;
         gap: 0.5rem;
         align-items: center;
         height: 30px;
-        .commentBtn{
+
+        .commentBtn {
             font-size: 1.25rem;
             cursor: pointer;
 
-            &:hover{
+            &:hover {
                 border: 1px solid gray;
             }
         }
     }
+}
+
+@media screen and (max-width:640px) {
+    .addCommentBox {
+
+        .commentControls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            flex-wrap: wrap;
+
+            .BTNBox {
+                margin: 0.5rem;
+            }
+
+        }
+    }
+}
+
+.warningLabel {
+    color: red;
+    text-align: center;
 }

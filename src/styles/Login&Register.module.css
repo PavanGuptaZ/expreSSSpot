@@ -61,6 +61,22 @@
     border-radius: 5px;
     background-color: #FF88C1;
 }
-.warningLabel{
+
+.warningLabel {
     color: red;
+}
+
+.userMessage {
+    text-align: center;
+    animation: fadeIN 1s ease;
+}
+
+@keyframes fadeIN {
+    0% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
