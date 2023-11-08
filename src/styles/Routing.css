@@ -1,10 +1,17 @@
 .ProfileListBtns {
+    width: 100%;
+    padding: 0 1rem;
 
     .btsList {
         display: flex;
+        justify-content: center;
         user-select: none;
-        cursor: pointer;
-
+        padding: 0.5rem 0;
+        /* height: 50px; */
+        max-width: 600px;
+        overflow-x: scroll;
+        margin: 0 auto;
+        scroll-padding-left: 10px;
     }
 
     .ProfileRotingBtns {
@@ -32,5 +39,23 @@
     .ProfileRotingBtns:hover::after {
         transform-origin: center;
         transform: scaleX(1);
+    }
+
+    .btsList::-webkit-scrollbar {
+        background-color: transparent;
+        height: 4px;
+    }
+
+    .btsList::-webkit-scrollbar-track {
+        border-radius: 50px;
+    }
+
+    .btsList::-webkit-scrollbar-thumb {
+        background-color: #FF88C1;
+        border-radius: 25px;
+    }
+
+    .btsList::-webkit-scrollbar-thumb:hover {
+        background-color: #ff0080;
     }
 }

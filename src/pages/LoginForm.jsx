@@ -94,7 +94,7 @@ export const LoginForm = () => {
           {checks && PasswordCheck01 && <div className={styles.warningLabel}>{userInput.password.trim().length} - no Spacing, atleast contain one captial, small letter, number and one from @, &, *, #, $, !, ? and limit of 3 to 20</div>}
 
         </div>
-        <button className={styles.submitBTN} style={{ color: text }} onClick={handleLogin}>Login</button>
+        <button className={styles.submitBTN} style={{ color: text }} onClick={handleLogin} disabled={isloading}>Login</button>
         <div id="LoginMessage" className={styles.userMessage}>{userInput.message}</div>
         {isloading && <div className="Loading">Loading</div>}
       </div>

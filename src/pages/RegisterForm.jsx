@@ -101,7 +101,7 @@ export const RegisterForm = () => {
           {checks && PasswordCheck02 && <div className={styles.warningLabel}>Password should be same</div>}
 
         </div>
-        <button className={styles.submitBTN} style={{ color: text }} onClick={handleRegister}>Submit</button>
+        <button className={styles.submitBTN} style={{ color: text }} onClick={handleRegister} disabled={isloading}>Submit</button>
         <div id="ResisterMessage">{userInput.message}</div>
         {isloading && <div className="Loading">Loading</div>}
       </div>

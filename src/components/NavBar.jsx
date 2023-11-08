@@ -9,7 +9,7 @@ import { LiteMode, DarkMode } from '../theme/themeColors';
 
 export const NavBar = () => {
   let { theme, setTheme } = useContext(themeDetails)
-  let { user, setUser } = useContext(userDetails)
+  let { user, setUser, userLoading  } = useContext(userDetails)
   let { body, text, main } = useMemo(() => theme ? DarkMode : LiteMode, [theme]);
   const [displayNav, setDisplayNav] = useState(false);
   const Navigate = useNavigate()
@@ -46,7 +46,7 @@ export const NavBar = () => {
         </span>
       </div>
       <div className={`navLinkBox ${displayNav ? "active" : ""}`} style={{ color: text }}>
-        {
+        {userLoading ? <p>Loading</p> :
           user !== null ?
             <>
               <NavLink to="/profile" className='navlink' style={Border} onClick={() => setDisplayNav(false)}>Profile</NavLink>

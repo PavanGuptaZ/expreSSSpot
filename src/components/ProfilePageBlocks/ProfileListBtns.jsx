@@ -17,6 +17,8 @@ export const ProfileListBtns = () => {
                 <NavLink to={"likes"} className="ProfileRotingBtns" style={{ color: text }}>Likes</NavLink>
                 <NavLink to={"comments"} className="ProfileRotingBtns" style={{ color: text }}>Comments</NavLink>
                 <NavLink to={"bookmarks"} className="ProfileRotingBtns" style={{ color: text }}>Bookmarks</NavLink>
+                <NavLink to={"following"} className="ProfileRotingBtns" style={{ color: text }}>Following</NavLink>
+                <NavLink to={"followers"} className="ProfileRotingBtns" style={{ color: text }}>Followers</NavLink>
             </div>
         </div>
     )

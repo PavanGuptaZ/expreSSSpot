@@ -58,24 +58,47 @@
     }
 }
 
-.uploadImageHead {
-    max-width: 300px;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    margin: 1rem 0;
-
-    /* .uploadImageInput {
-        width: 90%;
-    } */
+#newPostImageInput {
+    display: none;
 }
 
+.uploadImageHead {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+
+    .imageInputLabel {
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        background-color: #FF88C1;
+    }
+}
+
+.imageDisplayBox {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+
+    .imageDisplay {
+        max-width: 200px;
+        aspect-ratio: 16 / 9;
+        border: 1px solid gray;
+        padding: 0.25rem;
+    }
+}
+.imageName{
+    text-align: center;
+}
 .warningLabel {
     color: red;
     text-align: center;
 }
 
 .userMessage {
+    color: red;
     text-align: center;
     animation: fadeIN 1s ease;
 }

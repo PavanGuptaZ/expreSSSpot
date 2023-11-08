@@ -1,6 +1,6 @@
 
 //GET
-export { getPostByUserName } from './GET-PostByUserName'
+export { getPostOfUser } from './GET-PostOfUser'
 export { fetchPost } from './GET-Post'
 
 //POST

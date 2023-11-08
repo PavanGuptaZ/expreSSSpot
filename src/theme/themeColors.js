@@ -5,6 +5,7 @@ export let LiteMode = {
     secondry: "#FFF5FA",
     third: "#cccccc50",
     forth: "#cccccccc",
+    button:"#000",
     boxshadow: "0px 0px 15px 5px rgba(0, 0, 0, 0.15)",
     innershadow: "inset 0 0 5px rgba(0, 0, 0, 0.15)",
     glassBackground: {
@@ -22,6 +23,7 @@ export let DarkMode = {
     secondry: "#323743",
     third: "#21212180",
     forth: '#171A1Fcc',
+    button:"#F0F0F0",
     boxshadow: "0px 0px 15px 5px rgba(256, 256, 256, 0.15)",
     innershadow: "inset 0 0 10px rgba(256, 256, 256, 0.30)",
     glassBackground: {

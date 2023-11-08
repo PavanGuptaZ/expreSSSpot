@@ -4,6 +4,7 @@ export async function deletePost(variables) {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', authorization: `Bearer ${user.accessToken}` },
         credentials: 'include',
+        'Accept': 'application/json',
         body: JSON.stringify({ _id: post._id, userId: post.userId })
     }
     try {

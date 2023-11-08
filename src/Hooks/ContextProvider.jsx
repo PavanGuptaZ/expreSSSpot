@@ -4,20 +4,21 @@ import PropTypes from 'prop-types';
 import { useLocalStorageForTheme } from './index';
 export const userDetails = React.createContext()
 export const themeDetails = React.createContext()
+import { useQuery } from '@tanstack/react-query'
 
 export const ContextProvider = (prototype) => {
     const [theme, setTheme] = useLocalStorageForTheme("DarkMode", false)
     let [user, setUser] = useState(null)
-    let [userLoading, setUserLoading] = useState(true)
-    useEffect(() => {
-        getUser()
-    }, [])
-    // const userQuery = useQuery({
-    //     queryKey: ['user'],
-    //     queryFn: getUser
-    // })
+
+    const userQuery = useQuery({
+        queryKey: ['user'],
+        queryFn: getUser,
+        refetchInterval: 50 * 60 * 1000
+    })
+    useEffect(()=>{
+        console.log(userQuery.data)
+    },[userQuery])
     async function getUser() {
-        setUserLoading(true)
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -33,18 +34,17 @@ export const ContextProvider = (prototype) => {
 
             if (data.status === "ok") {
                 setUser(data.user)
+                return data.user
             }
             console.log(data)
             return null
         } catch (error) {
             console.log("Automatic Login error")
-        } finally {
-            setUserLoading(false)
         }
 
     }
     return (
-        <userDetails.Provider value={{ user, setUser, userLoading }}>
+        <userDetails.Provider value={{ user, setUser, userLoading: userQuery.isLoading }}>
             <themeDetails.Provider value={{ theme, setTheme }}>
                 {prototype.children}
             </themeDetails.Provider>

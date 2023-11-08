@@ -1,4 +1,4 @@
-export async function getPostByUserName(user, type) {
+export async function getPostOfUser(user, type) {
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', authorization: `Bearer ${user.accessToken}` },
