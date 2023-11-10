@@ -38,6 +38,7 @@ export const RegisterForm = () => {
         body: JSON.stringify(data)
       }
       try {
+        setIsLoading(true)
         await fetch(import.meta.env.VITE_BACKEND_LINK + "/register", requestOptions)
           .then((res) => res.json())
           .then((data) => {
