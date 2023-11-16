@@ -1,4 +1,4 @@
-export async function NewFeedPages(variables) {
+export async function feedPages(variables) {
     let { pageParam, user, type } = variables
     const requestOptions = {
         method: 'GET',

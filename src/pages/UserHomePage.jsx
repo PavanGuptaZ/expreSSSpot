@@ -4,9 +4,7 @@ import styles from '../styles/userHomePage.module.css';
 import { themeDetails, userDetails } from '../Hooks/ContextProvider';
 import { DarkMode, LiteMode } from '../theme/themeColors';
 import { useQueries } from '@tanstack/react-query';
-import { NewFeed } from '../api/homeFeed/GET-newfeed';
-import { FollowingFeed } from '../api/homeFeed/GET-followingfeed';
-import { SomeFeed } from '../api/homeFeed/GET-somefeed';
+import { SomeFeed, followingFeed, newFeedFunction } from '../api/homeFeed';
 
 
 export const UserHomePage = () => {
@@ -16,8 +14,8 @@ export const UserHomePage = () => {
 
   const homeFeedQueries = useQueries({
     queries: [
-      { queryKey: ['newQuerys'], queryFn: () => NewFeed(user), staleTime: 5 * 60 * 1000 },
-      { queryKey: ['followingQuery'], queryFn: () => FollowingFeed(user), staleTime: 5 * 60 * 1000 },
+      { queryKey: ['newQuerys'], queryFn: () => newFeedFunction(user), staleTime: 5 * 60 * 1000 },
+      { queryKey: ['followingQuery'], queryFn: () => followingFeed(user), staleTime: 5 * 60 * 1000 },
       { queryKey: ['someFeedQuerys'], queryFn: () => SomeFeed(user), staleTime: 5 * 60 * 1000 }
     ]
   })

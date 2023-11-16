@@ -1,4 +1,4 @@
-export async function NewFeed(user) {
+export async function newFeedFunction(user) {
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', authorization: `Bearer ${user.accessToken}` },

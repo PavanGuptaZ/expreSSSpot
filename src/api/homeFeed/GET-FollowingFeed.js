@@ -1,4 +1,4 @@
-export async function FollowingFeed(user) {
+export async function followingFeed(user) {
     const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', authorization: `Bearer ${user.accessToken}` },

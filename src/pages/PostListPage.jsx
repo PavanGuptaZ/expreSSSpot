@@ -5,19 +5,19 @@ import { Fragment, useContext } from "react"
 import { themeDetails, userDetails } from "../Hooks/ContextProvider"
 import { DarkMode, LiteMode } from "../theme/themeColors"
 import { useInfiniteQuery } from "@tanstack/react-query"
-import { NewFeedPages } from "../api/homeFeed/GET-NewFeedPages.js"
 import { LoginForm } from "./LoginForm.jsx"
 import { LoadingComponent } from "../components/LoadingComponent.jsx"
 import { PagenotFound } from "./PagenotFound.jsx"
 import { useGetTime } from "../Hooks/useTime.js"
 import { useNavigate } from "react-router-dom"
+import { feedPages } from "../api/homeFeed"
 
 export const PostListPage = (props) => {
   let { user } = useContext(userDetails)
 
   const pagesQurey = useInfiniteQuery({
     queryKey: [props.type],
-    queryFn: ({ pageParam = 1 }) => NewFeedPages({ pageParam, user, type: props.type }),
+    queryFn: ({ pageParam = 1 }) => feedPages({ pageParam, user, type: props.type }),
     getNextPageParam: (lastPage, allpage) => {
       if (lastPage.page < lastPage.totalPages) {
         return allpage.length + 1
