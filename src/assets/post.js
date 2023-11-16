@@ -1,6 +1,0 @@
-export const post = {
-    head: "Israel-Gaza War Live Updates: Israel Vows Hamas's Destruction After Deadly Attack",
-    content: "New Delhi: Nearly 3,600 people have been killed in Israel and Gaza, five days after the sudden Hamas strikes triggered a catastrophic war in the region. Israel has now announced a complete siege of Gaza, effectively blocking electricity, food, and water supply, one can only imagine how life would be for residents of the narrow strip, caught in the crossfire of warring powers.The United Nations said that more than 3 lakh people have been forced to flee their homes in the Gaza Strip as heavy Israeli bombardments continue to hit the Palestinian enclave. Israel Prime Minister Benjamin Netanyahu vowed the complete destruction of the Hamas group." + "Every Hamas member is a dead man," + " he said, again likening them to the ISIS group and promising: "+"We will crush them and destroy them as the world has destroyed Daesh.",
-    author: "Santosh Singh",
-    postedOn:Date.now()
-}

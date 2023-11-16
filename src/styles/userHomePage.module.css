@@ -6,13 +6,19 @@
     flex-direction: row;
 }
 
+.PostBlockBox {
+    padding: 0.5rem 0;
+    border-radius: 5px;
+    margin: 0.5rem 0;
+}
+
 .PostBlock01 {
     max-width: 620px;
     min-width: 340px;
     padding: 1rem;
     border-radius: 5px;
     margin: 0 0.5rem;
-    cursor: pointer;
+    height: 700px;
 }
 
 .PostBlock02 {
@@ -20,8 +26,20 @@
     flex-grow: 0;
     padding: 1rem;
     border-radius: 5px;
-    cursor: pointer;
     /* margin: 0 0.5rem; */
+}
+
+.PostBlock04 {
+    height: 340px;
+    border-radius: 5px;
+}
+
+.newPostsAside {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 700px;
+    justify-content: space-between;
 }
 
 .PostBlock03 {
@@ -31,34 +49,50 @@
     border-radius: 5px;
     /* margin: 0 0.5rem; */
 }
-.PostBlockBox {
-    padding: 0.5rem 0;
-    border-radius: 5px;
-    margin: 0.5rem 0;
+
+.PostBlock01 .content {
+    height: 250px;
 }
 
+
+
 .head {
+    cursor: pointer;
     font-family: 'Gabarito', sans-serif;
     font-size: 1.5rem;
     margin: 0.5rem 0;
     font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .head02 {
+    cursor: pointer;
     font-family: 'Gabarito', sans-serif;
     font-size: 1rem;
     margin: 0.5rem 0;
     font-weight: 500;
-
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .content {
+    cursor: pointer;
     margin: 0.5rem 0;
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-line;
 }
 
 .content02 {
+    cursor: pointer;
     font-size: 0.75rem;
     margin: 0.5rem 0;
+    height: 75px;
+    overflow: hidden;
 }
 
 .author {
@@ -67,60 +101,109 @@
     background-color: #FF88C1;
     padding: 0.25rem;
     border-radius: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    overflow: hidden;
     /* text-decoration: underline; */
 }
 
-.newPostsAside {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex-wrap: wrap;
 
-    .newsImage {
-        display: none;
-    }
-}
 
 .newsImage {
+    cursor: pointer;
     width: 100%;
     aspect-ratio: 16/9;
     overflow: hidden;
     border-radius: 3px;
 }
 
+.somePosts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 2rem;
+    gap: 0.5rem;
+}
+
+.fetchFailedMessage {
+    text-align: center;
+    color: gray;
+}
+
+.ViewMoreBTN {
+    cursor: pointer;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
 @media screen and (max-Width:1000px) {
+    .newPosts {
+        align-items: center;
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+
     .PostBlock01 {
         max-width: 688px;
+        max-height: 700px;
+        margin: 0;
+        height: auto;
+    }
+
+    .PostBlock01 .content {
+        height: auto;
     }
 
     .newPostsAside {
         flex-direction: row;
-        justify-content: center;
         flex-wrap: wrap;
+        height: auto;
+        gap: 0.5rem;
+    }
+
+    .PostBlock04 {
+        width: 340px;
     }
 
 }
 
-@media screen and (max-Width:710px) {
+@media screen and (max-Width:720px) {
+    .PostBlock01 {
+        max-width: 688px;
+        width: 100%;
+        max-height: fit-content;
+        height: auto;
+    }
+
+    .PostBlock01 .content {
+        height: 50px;
+    }
+
     .PostBlock02 {
         max-width: 688px;
-        margin: 0 0.5rem;
+        width: 100%;
     }
 
     .newPostsAside {
+        width: 100%;
         flex-direction: column;
-        justify-content: center;
-        flex-wrap: wrap;
+        /* justify-content: center; */
+    }
 
-        .newsImage {
-            display: block;
-        }
+    .PostBlock04 {
+        width: 100%;
+        height: auto;
+        padding: 0.5rem 0;
     }
 
 }
 
 @media screen and (max-Width:450px) {
     .PostBlock03 {
-        max-width: calc((100% / 2) - 1rem);
+        max-width: calc((100% / 2) - 0.5rem);
     }
 }

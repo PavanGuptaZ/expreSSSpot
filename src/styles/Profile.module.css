@@ -313,7 +313,7 @@
                 justify-content: flex-end;
                 gap: 1rem;
                 padding: 0 1rem;
-
+                height: 30px;
 
                 .BTNStyle {
                     cursor: pointer;
@@ -321,7 +321,7 @@
                     border: none;
                     outline: none;
                     font-size: 1.25rem;
-
+                    color: gray;
                 }
 
                 .editBTN {

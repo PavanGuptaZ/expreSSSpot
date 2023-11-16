@@ -53,7 +53,7 @@ export const WebsiteHome = () => {
             Join our community of thought-sharers <span style={{ color: "#FF88C1" }}>.</span>
           </div>
           <div className={styles.joinReview}>
-            “expreSSSpot has helped me gain a wider audience for my thoughts and ideas. I&#39;ve connected with amazing individuals and learned so much from their perspectives.” - Satish Singidi
+            “expreSSSpot has helped me gain a wider audience for my thoughts and ideas. I&#39;ve connected with amazing individuals and learned so much from their perspectives.” - <b>Satish Singidi</b>
           </div>
           <button to={'register'} className={styles.linkBTN}>Register</button>
         </div>

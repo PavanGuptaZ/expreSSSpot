@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import { useLocalStorageForTheme } from './index';
 export const userDetails = React.createContext()
@@ -13,11 +13,11 @@ export const ContextProvider = (prototype) => {
     const userQuery = useQuery({
         queryKey: ['user'],
         queryFn: getUser,
-        refetchInterval: 50 * 60 * 1000
+        refetchInterval: 50 * 60 * 1000,
+        staleTime: Infinity
     })
-    useEffect(()=>{
-        console.log(userQuery.data)
-    },[userQuery])
+
+
     async function getUser() {
         const requestOptions = {
             method: 'GET',
@@ -36,15 +36,15 @@ export const ContextProvider = (prototype) => {
                 setUser(data.user)
                 return data.user
             }
-            console.log(data)
+
             return null
         } catch (error) {
-            console.log("Automatic Login error")
+            return null
         }
 
     }
     return (
-        <userDetails.Provider value={{ user, setUser, userLoading: userQuery.isLoading }}>
+        <userDetails.Provider value={{ user, setUser, userLoading: userQuery.isLoading, fetching: userQuery.isFetching }}>
             <themeDetails.Provider value={{ theme, setTheme }}>
                 {prototype.children}
             </themeDetails.Provider>

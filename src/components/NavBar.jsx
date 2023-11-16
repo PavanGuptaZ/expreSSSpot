@@ -6,6 +6,7 @@ import { MdOutlineLightMode } from 'react-icons/md';
 import { TbLayoutNavbarCollapseFilled, TbLayoutNavbarExpandFilled } from 'react-icons/tb';
 import { themeDetails, userDetails } from '../Hooks/ContextProvider';
 import { LiteMode, DarkMode } from '../theme/themeColors';
+import { useQueryClient } from '@tanstack/react-query';
 
 export const NavBar = () => {
   let { theme, setTheme } = useContext(themeDetails)
@@ -13,6 +14,8 @@ export const NavBar = () => {
   let { body, text, main } = useMemo(() => theme ? DarkMode : LiteMode, [theme]);
   const [displayNav, setDisplayNav] = useState(false);
   const Navigate = useNavigate()
+  const queryClient = useQueryClient()
+
   const toggleMode = () => {
     setDisplayNav(pre => !pre)
   }
@@ -35,6 +38,7 @@ export const NavBar = () => {
     finally {
       setUser(null)
       Navigate("/")
+      queryClient.clear()
     }
   }
   return (

@@ -1,0 +1,98 @@
+.PostListPage {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem 0;
+}
+
+.loadMoreBTN {
+    padding: 0.5rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+}
+
+.listBox {
+    /* border: 1px solid gray; */
+    width: 100%;
+    padding: 0.5rem 1rem;
+}
+
+.ListBlock {
+    background-color: rgba(128, 128, 128, 0.1);
+    user-select: none;
+    min-width: 350px;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    margin: 0.55rem 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+
+    .imageBox {
+        width: 150px;
+        height: 150px;
+        cursor: pointer;
+    }
+
+    .listBlockContent {
+        display: flex;
+        flex-direction: column;
+        padding: 0.75rem;
+        overflow: hidden;
+
+        .listBlocktitle {
+            font-family: 'Gabarito', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .listBlockText {
+            font-family: 'Gabarito', sans-serif;
+            height: 60px;
+            line-height: 20px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .listBlockDate {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+@media screen and (max-Width:640px) {
+    .ListBlock {
+        grid-template-columns: 100px 1fr;
+
+        .imageBox {
+            width: 100px;
+            height: 100px;
+        }
+
+        .listBlockContent {
+            .listBlocktitle {
+                font-size: 1rem;
+            }
+
+            .listBlockText {
+                height: 40px;
+            }
+
+            .listBlockDate {
+                flex-direction: column;
+                text-align: right;
+                font-size: 0.75rem;
+            }
+        }
+    }
+}

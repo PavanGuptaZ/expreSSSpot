@@ -23,7 +23,9 @@ export const PostCommentBlock = (props) => {
     const commentDeleteMutation = useMutation({
         mutationFn: (variables) => postComment(variables),
         onSuccess: () => {
-            queryClient.invalidateQueries([`comments-${postQuary?.data?.post?._id}`])
+            queryClient.invalidateQueries({ queryKey: ['comments', `comments-${postQuary?.data?.post?._id}`] })
+            queryClient.invalidateQueries({ queryKey: ['post', `post-${postQuary?.data?.post?._id}`] })
+            queryClient.invalidateQueries({ queryKey: ['posts', '/comments'] })
             setContent("")
             setChecks(false)
         }

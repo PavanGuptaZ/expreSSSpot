@@ -2,8 +2,7 @@ import { useContext, useMemo } from "react";
 import { themeDetails } from '../Hooks/ContextProvider';
 import { LiteMode, DarkMode } from '../theme/themeColors';
 import logo from '../assets/ExpressSpot.png';
-import { useNavigate } from "react-router-dom";
-import { AiFillFacebook, AiFillLinkedin, AiOutlineTwitter } from 'react-icons/ai'
+import { Link, useNavigate } from "react-router-dom";
 
 
 export const Footer = () => {
@@ -21,12 +20,7 @@ export const Footer = () => {
           expreSSSpot
         </span>
       </div>
-
-      <div className="socialLinksBox">
-        <div className="linkdiv" style={{ color: text }}><AiFillFacebook /></div>
-        <div className="linkdiv" style={{ color: text }}><AiOutlineTwitter /></div>
-        <div className="linkdiv" style={{ color: text }}><AiFillLinkedin /></div>
-      </div>
+      <Link to={'/about'} style={{ color: text }}>About Project</Link>
     </div>
   )
 }

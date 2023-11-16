@@ -28,10 +28,32 @@
     font-size: 1.25rem;
     font-weight: 500;
     margin-left: auto;
+    user-select: none;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.postControls {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: auto;
+    width: 100px;
+    height: 35px;
+
+    .likeBox,
+    .bookmarkBox {
+        line-height: 30px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background-color: transparent;
+    }
 }
 
 .postImage {
-    /* width: 100%; */
+    width: 100%;
     aspect-ratio: 16/9;
     max-height: 500px;
     height: min-content;
@@ -149,14 +171,15 @@
         align-items: center;
         height: 30px;
 
-        .BTNStyle{
+        .BTNStyle {
             cursor: pointer;
             background-color: transparent;
             border: none;
             outline: none;
             font-size: 1.25rem;
-
+            color: gray;
         }
+
         .editBTN {
             &:hover {
                 color: #FF6AB1;

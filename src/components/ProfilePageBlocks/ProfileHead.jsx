@@ -6,6 +6,7 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { EditDescriptionDetails, EditNameDetails } from '../EditDetails';
 import { Link } from 'react-router-dom';
 import { ProfilePicUploadBlock } from './ProfilePicUploadBlock';
+import coverImage from "../../assets/coverImage.jfif"
 
 
 export const ProfileHead = () => {
@@ -19,7 +20,7 @@ export const ProfileHead = () => {
         <div className={styles.profileHeadBox} style={{ borderBottom: `1px solid ${third}` }}>
             <div className={styles.coverImageBox}>
                 <div className={styles.coverImage}>
-                    <img src="https://source.unsplash.com/9lTUAlNB87M" alt="Cover Image" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img src={coverImage} alt="Cover Image" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
                 <div className={styles.profileImage}>
                     <img src={profilePicSRC} alt="Cover Image" style={{ width: "100%", height: "100%", objectFit: "cover" }} />

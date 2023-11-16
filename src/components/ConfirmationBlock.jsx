@@ -14,7 +14,7 @@ export const ConfirmationBlock = (props) => {
     }
     const handleYes = () => {
         yesFunction()
-        handleNo()
+        setShowConfirmation(false)
     }
     useKey("Escape", () => handleNo())
     return (

@@ -224,32 +224,6 @@ nav {
     }
 }
 
-.socialLinksBox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-
-
-    .linkdiv {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-
-        &:first-child:hover {
-            color: #336AEA;
-        }
-
-        &:nth-child(2) {
-            color: #55ADEC;
-        }
-
-        &:nth-child(3) {
-            color: #09639A;
-        }
-    }
-}
-
 .confirmation-block {
     position: fixed;
     top: 0;
@@ -267,6 +241,46 @@ nav {
     }
 }
 
+.aboutBox {
+    padding: 1rem;
+
+    .aboutContent {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .line {
+        width: 50%;
+        margin: 0 auto;
+        height: 2px;
+        background-color: #FF88C1;
+    }
+}
+
+.socialLinksBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+
+    .linkAnchor {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        flex-direction: column;
+
+        &:hover {
+            outline: 1px solid gray;
+            outline-offset: 0.5rem;
+            border-radius: 5px;
+        }
+
+    }
+}
+
 .confirmation-content {
     position: absolute;
     border: 1px solid red;
@@ -278,7 +292,7 @@ nav {
         margin-bottom: 15px;
     }
 
-    .YesorNoBTN{
+    .YesorNoBTN {
         font-size: 1rem;
         padding: 0.125rem 0.5rem;
         border-radius: 5px;
@@ -289,8 +303,33 @@ nav {
         border: none;
         outline: none;
 
-        &:hover{
+        &:hover {
             background-color: #FF88C1;
         }
+    }
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.loading-icon {
+    width: 20px;
+    height: 20px;
+    color: #3498db;
+    /* Set the color of the icon */
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }

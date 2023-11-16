@@ -9,6 +9,7 @@ import { FiEdit3 } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { getPostOfUser, deletePost } from '../../api/posts'
 import { ConfirmationBlock } from '../ConfirmationBlock';
+import { useGetTime } from '../../Hooks/useTime';
 // import styled from 'styled-components'
 
 export const PostsList = (props) => {
@@ -17,16 +18,17 @@ export const PostsList = (props) => {
   const postsListQuery = useQuery({
     queryKey: ['posts', props.type],
     enabled: user !== null,
-    queryFn: () => getPostOfUser(user, props.type)
+    queryFn: () => getPostOfUser(user, props.type),
+    staleTime: 5 * 60 * 1000
   })
-  if (!postsListQuery.isFetched) {
-    <h1>Loading</h1>
+  if (postsListQuery.isLoading) {
+    return <p>Loading</p>
   }
   return (
     <div className={styles.ListBlockBox} >
       <div id="NewPostMessage" className={styles.userMessage}>{postsListQuery.data?.message}</div>
       {postsListQuery.isSuccess && postsListQuery.data.result && postsListQuery.data.posts.map((element) => {
-        return <PostListBox key={element._id} post={element} />
+        return <PostListBox key={element._id} post={element} type={props.type} />
       })}
     </div>
   )
@@ -39,7 +41,7 @@ export const PostListBox = (props) => {
   let { theme } = useContext(themeDetails)
   let { third } = theme ? DarkMode : LiteMode;
 
-  let { post } = props;
+  let { post, type } = props;
   const queryClient = useQueryClient()
 
   const deletePostMutation = useMutation({
@@ -52,7 +54,7 @@ export const PostListBox = (props) => {
 
   const handleEdit = (e) => {
     e.stopPropagation()
-    console.log("first")
+
   }
   const handleDelete = (e) => {
     e.stopPropagation()
@@ -76,15 +78,17 @@ export const PostListBox = (props) => {
             {post.text}
           </div>
           <div className={styles.listBlockDate}>
-            Posted on - {post.createdAt}
+            Posted on - {useGetTime(post.createdAt)}
           </div>
           <div className={styles.listBlockHead} onClick={(e) => e.stopPropagation()}>
-            <button className={styles.editBTN + " " + styles.BTNStyle} onClick={handleEdit} >
-              <FiEdit3 />
-            </button>
-            <button className={styles.deleteBTN + " " + styles.BTNStyle} onClick={(e) => deletePostMutation.status !== 'pending' && handleDelete(e)} >
-              {deletePostMutation.status !== 'pending' ? <MdDelete /> : <MdAutoDelete />}
-            </button>
+            {type == "/home" &&
+              <><button className={styles.editBTN + " " + styles.BTNStyle} onClick={handleEdit} >
+                <FiEdit3 />
+              </button>
+                <button className={styles.deleteBTN + " " + styles.BTNStyle} onClick={(e) => deletePostMutation.status !== 'pending' && handleDelete(e)} >
+                  {deletePostMutation.status !== 'pending' ? <MdDelete /> : <MdAutoDelete />}
+                </button>
+              </>}
           </div>
         </div>
       </div>
@@ -93,7 +97,9 @@ export const PostListBox = (props) => {
   )
 }
 PostListBox.propTypes = {
-  post: PropTypes.object
+  post: PropTypes.object,
+  type: PropTypes.string
+
 }
 PostsList.propTypes = {
   type: PropTypes.string

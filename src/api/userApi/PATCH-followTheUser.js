@@ -1,6 +1,6 @@
 export async function followTheUser(variables) {
     let { user, id } = variables
-    console.log(user)
+    console.log("follow")
     const requestOptions = {
         method: 'PATCH',
         headers: {
@@ -29,7 +29,7 @@ export async function followTheUser(variables) {
 
 export async function unfollowTheUser(variables) {
     let { user, id } = variables
-    console.log(user)
+    console.log("unfollow")
     const requestOptions = {
         method: 'PATCH',
         headers: {

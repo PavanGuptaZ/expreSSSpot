@@ -9,6 +9,8 @@ import { followTheUser, getAUserProfile, getUserProfilePosts, unfollowTheUser } 
 import { PagenotFound } from "./PagenotFound";
 import { LoadingComponent } from "../components";
 import PropTypes from 'prop-types';
+import { useGetTime } from "../Hooks/useTime";
+import coverImage from "../assets/coverImage.jfif"
 
 
 export const UserProfilePage = () => {
@@ -32,14 +34,14 @@ export const UserProfilePage = () => {
   const followingMutation = useMutation({
     mutationFn: (variables) => followTheUser(variables),
     onSuccess: () => {
-      queryClient.invalidateQueries([`userProfile - ${id}`])
+      queryClient.invalidateQueries({ queryKey: [`userProfile - ${id}`] })
     }
   })
 
   const unfollowingMutation = useMutation({
     mutationFn: (variables) => unfollowTheUser(variables),
     onSuccess: () => {
-      queryClient.invalidateQueries([`userProfile - ${id}`])
+      queryClient.invalidateQueries({ queryKey: [`userProfile - ${id}`] })
     }
   })
   if (!user) {
@@ -59,15 +61,18 @@ export const UserProfilePage = () => {
       followingMutation.mutate({ user, id: userProfileQuery.data.data._id })
     }
   }
+
+  let profilePicSRC = import.meta.env.VITE_BACKEND_LINK + '/images/profile/' + (userProfileQuery.data.data.profilePic.startsWith('profile') ? 'profile_pic.png' : user.profilePic);
+
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <div className={styles.profileHeadBox} style={{ borderBottom: `1px solid ${third}` }}>
         <div className={styles.coverImageBox}>
           <div className={styles.coverImage}>
-            <img src="https://source.unsplash.com/9lTUAlNB87M" alt="Cover Image" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src={coverImage} alt="Cover Image" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
           <div className={styles.profileImage}>
-            <img src="https://source.unsplash.com/rDEOVtE7vOs" alt="Cover Image" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img src={profilePicSRC} alt="Cover Image" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           </div>
         </div>
         <div className={styles.userDetails}>
@@ -84,11 +89,12 @@ export const UserProfilePage = () => {
             <div className={styles.FollowingLink}>
               Followers: {userProfileQuery.data.data.followingBy.length}
             </div>
-            <button className={styles.followLink} disabled={userProfileQuery.isFetching || followingMutation.isPending}
+            {id != user._id && <button className={styles.followLink} disabled={userProfileQuery.isFetching || followingMutation.isPending}
               onClick={handleFollow} style={{ backgroundColor: button, color: body }}>
               {(userProfileQuery.isFetching || followingMutation.isPending)
                 ? "loading" : userProfileQuery.data.data.followingBy.includes(user._id) ? "unfollow" : "Follow"}
             </button>
+            }
           </div>
         </div>
       </div>
@@ -127,7 +133,7 @@ export const ProfileListBox = (props) => {
           {post.text}
         </div>
         <div className={styles.listBlockDate}>
-          Posted on - {post.createdAt}
+          Posted on - {useGetTime(post.createdAt)}
         </div>
       </div>
     </div>

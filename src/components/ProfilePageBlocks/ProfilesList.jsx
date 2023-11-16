@@ -18,7 +18,7 @@ export const ProfilesList = (props) => {
     })
 
     if (usersListQuery.isLoading) {
-        <p>Loading</p>
+        return <p>Loading</p>
     }
     return (
         <div className={styles.ListBlockBox} >

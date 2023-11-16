@@ -44,7 +44,8 @@ export const RegisterForm = () => {
           .then((data) => {
             setUserInput((pre) => ({ ...pre, message: data.message }))
             if (data.email === userInput.email) {
-              setUserInput((pre) => ({ ...pre, message: "Account Created" }))
+              setUserInput({ email: "", password1: "", password2: "", message: "Account Created" })
+              setChecks(false)
             }
           })
       } catch {
