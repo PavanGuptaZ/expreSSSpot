@@ -52,6 +52,7 @@
 
 .PostBlock01 .content {
     height: 250px;
+    overflow: hidden;
 }
 
 
@@ -156,6 +157,7 @@
 
     .PostBlock01 .content {
         height: auto;
+        max-height: 150px;
     }
 
     .newPostsAside {
@@ -195,9 +197,7 @@
     }
 
     .PostBlock04 {
-        width: 100%;
-        height: auto;
-        padding: 0.5rem 0;
+        display: none;
     }
 
 }

@@ -26,6 +26,7 @@ export const PostListPage = (props) => {
       }
     },
     enabled: user !== null,
+    staleTime: 5 * 60 * 1000
   })
 
   if (!user) {
@@ -34,9 +35,10 @@ export const PostListPage = (props) => {
   if (PostListPage.status == "loading") {
     return <LoadingComponent />
   }
-  if (!PostListPage.status == "error") {
+  if (PostListPage.status == "error") {
     return <PagenotFound />
   }
+
   return (
     <div className={styles.PostListPage}>
       <Heading title={props.type + " List"} textSize={"1.5rem"} />
@@ -44,11 +46,11 @@ export const PostListPage = (props) => {
         {
           pagesQurey.data?.pages.map((page, i) => (
             <Fragment key={i}>
-              {
-                page.posts.map((ele) => (
+              {page.result ?
+                page?.posts.map((ele) => (
                   <PostListBox key={ele._id} post={ele} />
                 ))
-              }
+                : <p style={{ textAlign: "center" }}>{page.message}</p>}
             </Fragment>
           ))
         }

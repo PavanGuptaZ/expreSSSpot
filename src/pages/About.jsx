@@ -3,7 +3,7 @@ import aboutContent from '../assets/about.json';
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 import { FaXTwitter } from "react-icons/fa6";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { useContext, useMemo } from 'react';
+import { Fragment, useContext, useMemo } from 'react';
 import { themeDetails } from '../Hooks/ContextProvider';
 import { DarkMode, LiteMode } from '../theme/themeColors';
 
@@ -14,12 +14,12 @@ export const About = () => {
 
   return (
     <div className='aboutBox'>
-      {aboutContent.data.map((element) => (
-        <>
+      {aboutContent.data.map((element, i) => (
+        <Fragment key={i}>
           <Heading title={element.title} />
           <p className='aboutContent'>{element.content}</p>
           <div className='line'></div>
-        </>
+        </Fragment>
       ))}
       <Heading title={"Contect"} />
       <div className="socialLinksBox">
@@ -39,7 +39,7 @@ export const About = () => {
         Your support and insights are essential in fueling the progress of expreSSSpot.
       </p>
       <div className='line'></div>
-      <p className='aboutContent' style={{margin:"1rem 0"}}>Thank you for being part of this journey. Together, let&apos;s make expreSSSpot a thriving hub of thoughts, ideas, and connections.</p>
+      <p className='aboutContent' style={{ margin: "1rem 0" }}>Thank you for being part of this journey. Together, let&apos;s make expreSSSpot a thriving hub of thoughts, ideas, and connections.</p>
     </div>
   )
 }

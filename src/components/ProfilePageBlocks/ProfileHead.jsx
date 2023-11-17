@@ -6,7 +6,7 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { EditDescriptionDetails, EditNameDetails } from '../EditDetails';
 import { Link } from 'react-router-dom';
 import { ProfilePicUploadBlock } from './ProfilePicUploadBlock';
-import coverImage from "../../assets/coverImage.jfif"
+import coverImage from "../../assets/coverImage.jpg"
 
 
 export const ProfileHead = () => {

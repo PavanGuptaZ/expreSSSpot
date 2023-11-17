@@ -10,7 +10,7 @@ import { PagenotFound } from "./PagenotFound";
 import { LoadingComponent } from "../components";
 import PropTypes from 'prop-types';
 import { useGetTime } from "../Hooks/useTime";
-import coverImage from "../assets/coverImage.jfif"
+import coverImage from "../assets/coverImage.jpg"
 
 
 export const UserProfilePage = () => {

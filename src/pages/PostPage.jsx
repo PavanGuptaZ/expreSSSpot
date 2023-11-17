@@ -93,7 +93,9 @@ export const PostPage = () => {
       </div>
       <div className={styles.breakLine}></div>
       <div className={styles.postContent}>
-        {post.text}
+        {post.text.split('\n').map((paragraph, i) => (
+          <p key={i} className={styles.paragraph}>{paragraph}</p>
+        ))}
       </div>
       <div className={styles.postPostedOn}>
         {GetTime(post.updatedAt)}
