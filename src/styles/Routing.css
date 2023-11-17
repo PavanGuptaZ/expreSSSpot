@@ -4,7 +4,7 @@
 
     .btsList {
         display: flex;
-        justify-content: center;
+        /* justify-content: center; */
         user-select: none;
         padding: 0.5rem 0;
         /* height: 50px; */

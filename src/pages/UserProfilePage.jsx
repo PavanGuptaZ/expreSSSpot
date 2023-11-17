@@ -62,7 +62,7 @@ export const UserProfilePage = () => {
     }
   }
 
-  let profilePicSRC = import.meta.env.VITE_BACKEND_LINK + '/images/profile/' + (userProfileQuery.data.data.profilePic.startsWith('profile') ? 'profile_pic.png' : user.profilePic);
+  let profilePicSRC = import.meta.env.VITE_BACKEND_LINK + '/images/profile/' + (userProfileQuery.data.data.profilePic.startsWith('profile') ? 'profile_pic.png' : userProfileQuery.data.data.profilePic);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
